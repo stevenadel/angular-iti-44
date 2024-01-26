@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="user-img"></div>
+    <div class="user-info">
+        <div class="username">{{ username }}</div>
+        <i class="fa-solid fa-star" [ngStyle]="{'color': isVerified ? 'green' : 'red'}"></i>
+    </div>
+    <div class="email">{{ email }}</div>
+    <div class="phone">{{ phone }}</div>
+</div>

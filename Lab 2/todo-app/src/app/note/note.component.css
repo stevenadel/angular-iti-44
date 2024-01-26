@@ -1,0 +1,22 @@
+.note-container {
+    border: 1px solid #3178c6;
+    border-radius: 5px;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.note-text {
+    display: inline-block;
+    max-width: 80%;
+}
+
+.delete-note {
+    font-size: large;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 15px 25px;
+    cursor: pointer;
+}

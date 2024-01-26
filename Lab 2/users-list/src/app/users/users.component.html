@@ -1,0 +1,12 @@
+<div class="main-container">
+    <h2>Users</h2>
+    <div class="search-container">
+        <input type="search">
+        <button class="search-btn">Search</button>
+    </div>
+    <div class="users-container">
+        @for (user of users; track user.id) {
+            <app-user [username]="user.username" [email]="user.email" [phone]="user.phone" [isVerified]="user.is_verified"></app-user>
+        }
+    </div>
+</div>
