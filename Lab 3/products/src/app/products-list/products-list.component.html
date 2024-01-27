@@ -1,0 +1,9 @@
+<h2>Welcome to our shopping website, start browsing...</h2>
+<hr />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  @for(product of products; track product.id){
+    <div class="col">
+      <app-product [productItem]="product"></app-product>
+    </div>
+  }
+</div>
