@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center">
+    <form class="w-50" #loginForm="ngForm">
+        <div class="mb-3">
+            <label for="email-input" class="form-label fw-bold">Email address</label>
+            <input type="email" class="form-control" id="email-input"
+            #email="ngModel" ngModel name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+            @if (email.invalid && email.touched) {
+                @if (email.errors?.['required']) {
+                    <div class="form-text text-danger">Email is required.</div>
+                } @else if (email.errors?.['pattern']) {
+                    <div class="form-text text-danger">Please enter a valid email.</div>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="password-input" class="form-label fw-bold">Password</label>
+            <input type="password" class="form-control" id="password-input" 
+            #password="ngModel" ngModel name="password" required>
+            @if (password.invalid && password.touched) {
+                @if (password.errors?.['required']) {
+                    <div class="form-text text-danger">Password is required.</div>
+                }
+            }
+        </div>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">Login</button>
+    </form>
+</div>
+<h4 class="text-center fw-bold mt-5">Don't have an account? <a class="text-dark link-underline-dark" routerLink="/register">Register</a></h4>

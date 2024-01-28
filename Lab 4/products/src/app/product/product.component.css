@@ -1,0 +1,28 @@
+.card {
+    cursor: pointer;
+}
+
+.badge {
+    top: 10px;
+    left: 10px;
+    padding: 5px 15px;
+    border-radius: 15px;
+}
+
+img {
+    height: 300px;
+}
+
+.product-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+button {
+    padding: 5px 15px;
+    border-radius: 25px;
+}
