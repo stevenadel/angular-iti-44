@@ -1,0 +1,13 @@
+img {
+    height: 160px;
+    width: 140px;
+}
+
+.total-container {
+    width: 280px;
+    padding: 30px 20px;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+}

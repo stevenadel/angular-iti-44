@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+    <form class="w-50" [formGroup]="registerForm">
+        <div class="mb-3">
+            <label for="name-input" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name-input" formControlName="name">
+            @if (registerForm.controls["name"].invalid && registerForm.controls["name"].touched) {
+                @if (registerForm.controls["name"].errors?.['required']) {
+                    <div class="form-text text-danger">Name is required.</div>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="email-input" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email-input" formControlName="email">
+            @if (registerForm.controls["email"].invalid && registerForm.controls["email"].touched) {
+                @if (registerForm.controls["email"].errors?.['required']) {
+                    <div class="form-text text-danger">Email is required.</div>
+                } @else if (registerForm.controls["email"].errors?.['pattern']) {
+                    <div class="form-text text-danger">Please enter a valid email.</div>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="username-input" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username-input" formControlName="username">
+            @if (registerForm.controls["username"].invalid && registerForm.controls["username"].touched) {
+                @if (registerForm.controls["username"].errors?.['required']) {
+                    <div class="form-text text-danger">Username is required.</div>
+                } @else if (registerForm.controls["username"].errors?.['pattern']) {
+                    <div class="form-text text-danger">Please enter a valid username.</div>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="password-input" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password-input" formControlName="password">
+            @if (registerForm.controls["password"].invalid && registerForm.controls["password"].touched) {
+                @if (registerForm.controls["password"].errors?.['required']) {
+                    <div class="form-text text-danger">Password is required.</div>
+                } @else if (registerForm.controls["password"].errors?.['minlength']) {
+                    <div class="form-text text-danger">Password must be at least 8 characters long.</div>
+                } @else if (registerForm.controls["password"].errors?.['pattern']) {
+                    <div class="form-text text-danger">Please enter a valid password.</div>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="confirmpass-input" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmpass-input" formControlName="confirmpass">
+            @if (registerForm.controls["confirmpass"].invalid && registerForm.controls["confirmpass"].touched) {
+                @if (registerForm.controls["confirmpass"].errors?.['required']) {
+                    <div class="form-text text-danger">Please confirm password.</div>
+                }
+            }
+        </div>
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+</div>
+<h4 class="text-center fw-bold mt-5">Already have an account? <a class="text-dark link-underline-dark"
+        routerLink="/login">Login</a></h4>

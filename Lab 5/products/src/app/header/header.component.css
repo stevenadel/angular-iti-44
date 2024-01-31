@@ -1,0 +1,20 @@
+.active-home {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+.active_link {
+    color: salmon;
+    font-weight: bold;
+}
+
+i {
+    padding-top: 15px;
+    padding-bottom: 0;
+    cursor: pointer;
+}
+
+.badge {
+    position: absolute;
+    top: 5px;
+}

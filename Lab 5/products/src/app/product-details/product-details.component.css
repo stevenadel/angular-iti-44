@@ -1,0 +1,19 @@
+.fa-star {
+    color: green;
+}
+
+.badge, .btn-light {
+    padding: 7px 20px;
+    border-radius: 20px;
+}
+
+.main-btn {
+    font-size: large;
+    padding: 10px 50px;
+    border-radius: 35px;
+}
+
+.btn-success {
+    border-color: rgb(0, 74, 0);
+    background: rgb(0, 74, 0);
+}
