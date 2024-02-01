@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand bg-body-tertiary px-3">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/" 
-    routerLinkActive="active-home" [routerLinkActiveOptions]="{exact: true}">Products App</a>
+    routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Products App</a>
     <div class="navbar-nav fw-bold">
-      <a class="nav-link" routerLink="/register" routerLinkActive="active_link">Register</a>
-      <a class="nav-link" routerLink="/login" routerLinkActive="active_link">Login</a>
-      <i class="nav-link fa-solid fa-cart-shopping" routerLink="/cart" routerLinkActive="active_link"><span class="badge text-bg-secondary">{{ dataService.getCartSize() }}</span></i>
+      <a class="nav-link" routerLink="/register" routerLinkActive="active-link">Register</a>
+      <a class="nav-link" routerLink="/login" routerLinkActive="active-link">Login</a>
+      <i class="nav-link fa-solid fa-cart-shopping" routerLink="/cart" routerLinkActive="active-link"><span class="badge text-bg-secondary">{{ dataService.getCartSize() }}</span></i>
     </div>
   </div>
 </nav>

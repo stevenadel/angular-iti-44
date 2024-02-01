@@ -21,14 +21,31 @@ export class ProductsDataService {
   }
 
   addProduct(product: Product): void {
-    product.quantity = (product.quantity) ? (product.quantity + 1) : 1;
     this.currentCartItems.pipe(take(1)).subscribe((items) => {
-      const newCartItems = [...items, product];
-      this.cartSource.next(newCartItems);
-      console.log(newCartItems);
+      if (product.stock > 0) {
+        const productIndex = items.findIndex((item: { id: number; }) => item.id === product.id);
+        if (productIndex !== -1) {
+          items[productIndex].quantity += 1;
+        } else {
+          product.quantity = 1;
+          const newCartItems = [...items, product];
+          this.cartSource.next(newCartItems);
+        }
+        product.stock--;
+      }
     });
   }
   
+  removeProduct(product: Product): void {
+    const currentItems = this.cartSource.getValue();
+    const index = currentItems.findIndex((item: Product) => item.id === product.id);
+
+    if (index !== -1) {
+      currentItems.splice(index, 1);
+      this.cartSource.next([...currentItems]);
+    }
+  }
+
   getCartSize(): number {
     let length = 0;
     this.currentCartItems.subscribe((items) => {

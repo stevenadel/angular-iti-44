@@ -12,25 +12,34 @@ import { Product } from '../product';
 export class CartComponent {
   products: Array<Product>;
   cartItems: Array<Product>;
-  totalPrice: number;
 
   constructor(private dataService: ProductsDataService) {
     this.products = this.cartItems = [];
-    this.totalPrice = 0;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.dataService.getList().subscribe(data => {
       this.products = data.products;
-      this.updateTotalPrice();  
     });
 
     this.dataService.currentCartItems.subscribe((items) => {
       this.cartItems = items;
     })
   }
-  
-  updateTotalPrice() {
-    this.totalPrice = this.cartItems.reduce((sum, product) => sum + product.price, 0);
+
+  increaseQuantity(product: Product): void {
+    this.dataService.addProduct(product);
+  }
+
+  decreaseQuantity(product: Product): void {
+    product.quantity > 1 ? product.quantity-- : this.removeProduct(product);
+  }
+
+  removeProduct(product: Product): void {
+    this.dataService.removeProduct(product);
+  }
+
+  getTotalPrice(): number {
+    return this.cartItems.reduce((sum, product) => sum + (product.price * product.quantity), 0);
   }
 }

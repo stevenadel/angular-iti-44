@@ -13,15 +13,13 @@ import { ProductsDataService } from '../products-data.service';
 export class ProductComponent {
   @Input() productItem!: Product;
 
-  constructor(private router: Router, private dataService: ProductsDataService) {}
+  constructor(private router: Router, private dataService: ProductsDataService) { }
 
   viewProduct(): void {
-    this.router.navigate(['/product-details' , this.productItem.id ]);
+    this.router.navigate(['/product-details', this.productItem.id]);
   }
 
   addToCart(): void {
-    if (this.productItem.stock > 0) {
-      this.dataService.addProduct(this.productItem);
-    }
+    this.dataService.addProduct(this.productItem);
   }
 }

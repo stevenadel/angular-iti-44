@@ -26,21 +26,21 @@
             <span class="text-secondary fw-bold fs-5">Product Code: {{ product.id }}</span>
         </div>
         <div class="col-3 d-flex align-items-center">
-            <button class="btn btn-success fs-4" style="height: 70px; width: 70px;">+</button>
-            <span class="fs-4 border" style="padding: 15px 30px;">1</span>
-            <button class="btn btn-light fs-4" style="height: 70px; width: 70px;">-</button>
+            <button class="btn btn-success fs-4" style="height: 70px; width: 70px;" (click)="increaseQuantity(product)">+</button>
+            <span class="fs-4 border" style="padding: 15px 30px;">{{ product.quantity }}</span>
+            <button class="btn btn-light fs-4" style="height: 70px; width: 70px;" (click)="decreaseQuantity(product)">-</button>
     
         </div>
         <div class="col-2">
-            <button class="btn btn-outline-dark fs-4" style="height: 70px; width: 70px;">x</button>
+            <button class="btn btn-outline-dark fs-4" style="height: 70px; width: 70px;" (click)="removeProduct(product)">x</button>
         </div>
         <div class="col-1">
-            <h4 class="text-dark">${{ product.price }}</h4>
+            <h4 class="text-dark">${{ product.price * product.quantity }}</h4>
         </div>
         <hr class="my-0">
     </div>
 }
 <div class="total-container">
     <span class="text-secondary fs-4">Total</span>
-    <span class="text-dark fs-4">${{ totalPrice }}</span>
+    <span class="text-dark fs-4">${{ getTotalPrice() }}</span>
 </div>

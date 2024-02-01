@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import productsList from '../../assets/products-list.json'
 import { ProductsDataService } from '../products-data.service';
 import { Product } from '../product';
 
@@ -14,21 +13,22 @@ import { Product } from '../product';
 export class ProductDetailsComponent {
   productItem: any;
 
-  constructor(private route: ActivatedRoute, private dataService: ProductsDataService) {}
+  constructor(private route: ActivatedRoute, private dataService: ProductsDataService) { }
 
   ngOnInit() {
     let id = this.route.snapshot.params['id'];
-    this.productItem = productsList.find((product) => product.id == id);
+    this.dataService.getList().subscribe(data => {
+      let products = data.products;
+      this.productItem = products.find((product: Product) => product.id == id);
+    });
   }
 
   // Bonus
-  getStars(rating: number) {
+  getStars(rating: number): Array<number> {
     return Array.from({ length: Math.floor(rating) }, (_, index) => index + 1);
   }
 
-  addToCart() {
-    if (this.productItem.stock > 0) {
-      this.dataService.addProduct(this.productItem);
-    }
+  addToCart(): void {
+    this.dataService.addProduct(this.productItem);
   }
 }
